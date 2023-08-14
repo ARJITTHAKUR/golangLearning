@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func getNaturalNumber(n chan<- int) {
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1; i++ {
 		n <- i
 	}
 	close(n)
