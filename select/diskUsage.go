@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 func main() {
@@ -17,11 +18,13 @@ func main() {
 	}
 
 	fileSizes := make(chan int64)
-
+	var n sync.WaitGroup
+	for _, root := range roots {
+		n.Add(1)
+		go walkDir(root, &n, fileSizes)
+	}
 	go func() {
-		for _, root := range roots {
-			walkDir(root, fileSizes)
-		}
+		n.Wait()
 		close(fileSizes)
 	}()
 
@@ -34,11 +37,13 @@ func main() {
 	fmt.Printf("%d files %.1f GB\n", nfiles, float64(nbytes)/1e9)
 }
 
-func walkDir(dir string, fileSizes chan<- int64) {
+func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
+	defer n.Done()
 	for _, entry := range dirents(dir) {
 		if entry.IsDir() {
+			n.Add(1)
 			subDir := filepath.Join(dir, entry.Name())
-			walkDir(subDir, fileSizes)
+			walkDir(subDir, n, fileSizes)
 		} else {
 			fileSizes <- entry.Size()
 		}
