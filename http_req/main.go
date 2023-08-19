@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	authRequest.Header.Set("Authorization", fmt.Sprintf("Bearer Token %s", "token"))
+	authRequest.Header.Set("Authorization", fmt.Sprintf("Bearer %s", "token"))
 	authRequest.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
