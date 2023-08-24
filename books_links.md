@@ -1,0 +1,1 @@
+https://github.com/diptomondal007/GoLangBooks/blob/master/%5BTom-Steele%2C-Chris-Patten%2C-Dan-Kottmann%5D-Black-Hat-Go.pdf
