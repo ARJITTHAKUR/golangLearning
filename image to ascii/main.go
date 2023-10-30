@@ -34,8 +34,7 @@ func main() {
 	}
 	defer out.Close()
 	chars := []string{"@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."}
-	// fmt.Println(len(chars))
-	// return
+
 	width := 200
 	aspectRatio := imageData.Bounds().Dy() / imageData.Bounds().Dx()
 	height := width * aspectRatio
@@ -64,7 +63,6 @@ func main() {
 			// grey.
 		}
 		out.WriteString("\n")
-		// fmt.Println(line)
 	}
 }
 
