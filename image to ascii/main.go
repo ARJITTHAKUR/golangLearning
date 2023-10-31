@@ -48,19 +48,14 @@ func main() {
 			c := resizedImage.At(j, i)
 			r, g, b, _ := c.RGBA()
 			gray := uint8((r + g + b) / 3 >> 8)
-			// fmt.Println(gray)
 			// gray := color.GrayModel.Convert(c).(color.Gray)
-			// fmt.Println(gray.Y, len(chars))
 			index := (int(gray) * len(chars)) / 255
 			out.WriteString(chars[index])
 			// model := imageData.ColorModel().Convert()
 			// line = append(line, r, g, b, a)
 			// line = append(line, model)
 
-			// break
-			// trying grey
 			// grey := image.NewGray(imageData.Bounds())
-			// grey.
 		}
 		out.WriteString("\n")
 	}
