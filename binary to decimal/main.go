@@ -53,9 +53,6 @@ func decimalToBinary(num int) {
 }
 func binaryToDecimal(num int) (int, error) {
 
-	// 13 -> 1101
-	// total := 1
-
 	binary := ""
 	for num > 0 {
 		temp := num
