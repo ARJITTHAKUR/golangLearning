@@ -14,7 +14,6 @@ func main() {
 	var userInput string
 
 	_, err := fmt.Scan(&userInput)
-	// _, err := fmt.Scan(&userInput)
 
 	if err != nil {
 		log.Fatal(err)
@@ -30,7 +29,6 @@ func main() {
 
 	// now convert the n binary digit to decimal number system
 
-	//1101
 	// var total int
 	// power := 0
 	// for n > 0 {
