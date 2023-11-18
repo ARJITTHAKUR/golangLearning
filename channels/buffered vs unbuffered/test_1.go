@@ -37,8 +37,8 @@ func main() {
 }
 
 func someTask(taskchannel chan<- struct{}, tasknumber int) {
-	fmt.Println("task started", tasknumber)
+	// fmt.Println("task started", tasknumber)
 	time.Sleep(time.Millisecond * 100 * time.Duration(tasknumber))
-	fmt.Println("task completed", tasknumber)
+	// fmt.Println("task completed", tasknumber)
 	taskchannel <- struct{}{}
 }
