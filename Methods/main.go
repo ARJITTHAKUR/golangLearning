@@ -7,6 +7,8 @@ import (
 
 type Point struct{ X, Y float64 }
 
+type PointSlice []Point
+
 func (p Point) Distance(q Point) float64 {
 	return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
@@ -24,4 +26,7 @@ func main() {
 	fmt.Println(p.Distance(q))
 	p.Scale(2.0)
 	fmt.Println(p)
+
+	sl := PointSlice{Point{1, 2}, Point{3, 4}}
+	fmt.Println(sl)
 }
