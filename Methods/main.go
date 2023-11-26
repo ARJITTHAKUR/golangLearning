@@ -23,10 +23,10 @@ func main() {
 	p := Point{1, 2}
 	q := Point{4, 6}
 
-	fmt.Println(p.Distance(q))
+	// fmt.Println(p.Distance(q))
 	p.Scale(2.0)
-	fmt.Println(p)
+	// fmt.Println(p)
 
 	sl := PointSlice{Point{1, 2}, Point{3, 4}}
-	fmt.Println(sl)
+	// fmt.Println(sl)
 }
