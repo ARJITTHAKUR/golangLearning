@@ -11,7 +11,7 @@ func main() {
 	fmt.Println(x)
 	fmt.Println(ptr)
 	fmt.Println(*ptr)
-	fmt.Println(anotherPtr)
+	// fmt.Println(anotherPtr)
 
 	arr := [3]int{1, 2, 3}
 
