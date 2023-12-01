@@ -7,10 +7,10 @@ import (
 func main() {
 	var x int = 10
 	var ptr *int = &x
-	anotherPtr := &x
+	// anotherPtr := &x
 	fmt.Println(x)
 	fmt.Println(ptr)
-	fmt.Println(*ptr)
+	// fmt.Println(*ptr)
 	// fmt.Println(anotherPtr)
 
 	arr := [3]int{1, 2, 3}
