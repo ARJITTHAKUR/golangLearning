@@ -44,7 +44,7 @@ func main() {
 
 	var linkedList LinkedList
 	linkedList.AddToHead(1)
-	linkedList.AddToHead(2)
+	// linkedList.AddToHead(2)
 	linkedList.AddToEnd(56)
 
 	fmt.Println(linkedList.headNode.property)
