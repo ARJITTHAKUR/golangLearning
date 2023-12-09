@@ -31,11 +31,11 @@ func main() {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		// You can add your own logic here to determine which backend server to use
 		// For example, based on the request path, headers, or any other criteria
-
+		fmt.Println("receiving request on proxy")
 		// In this example, we're using a simple round-robin strategy
-		if r.URL.Path == "/server1" {
+		if r.URL.Path == "/one" {
 			proxy1.ServeHTTP(w, r)
-		} else {
+		} else if r.URL.Path == "/two" {
 			proxy2.ServeHTTP(w, r)
 		}
 	}
