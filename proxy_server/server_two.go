@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	fmt.Println("starting server two")
+	fmt.Println("starting server 2")
 	http.HandleFunc("/two", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("server two responding")
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
