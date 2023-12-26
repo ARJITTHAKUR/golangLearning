@@ -10,8 +10,6 @@ import (
 
 func main() {
 
-	// fmt.Println("data", openPictureConvertToBytes())
-	// os.Exit(1)
 	list, err := net.Listen("tcp", "127.0.0.1:8080")
 
 	if err != nil {
@@ -26,44 +24,41 @@ func main() {
 			fmt.Println(err)
 			break
 		}
-		data := make([]byte, 1024)
-		conn.Read(data)
-
-		parseHTTP(data)
-		// responseData := []byte("HTTP/1.1 200 OK\r\n" +
-		// "Accept-Ranges: none\r\n" +
-		// "Vary: Accept-Encoding\r\n" +
-		// "Content-Type: text/html\r\n" +
-		// "Content-lengthL 20\r\n" +
-		// "\r\n" +
-		// "<h1>Hello, World!")
-
-		responseData := []byte("HTTP/1.1 200 OK\r\n" +
-			"Accept-Ranges: none\r\n" +
-			"Vary: Accept-Encoding\r\n" +
-			"Content-Type: image/jpeg\r\n" +
-			// "Content-lengthL 20\r\n" +
-			"\r\n")
-		responseData = append(responseData, openPictureConvertToBytes()...)
-		conn.Write(responseData)
+		go handleConn(conn)
 	}
 }
 
-//	var requestMap = map[string]string{
-//		"GET" : ""
-//	}
+func handleConn(conn net.Conn) {
+
+	data := make([]byte, 1024)
+	conn.Read(data)
+
+	parseHTTP(data)
+	// responseData := []byte("HTTP/1.1 200 OK\r\n" +
+	// "Accept-Ranges: none\r\n" +
+	// "Vary: Accept-Encoding\r\n" +
+	// "Content-Type: text/html\r\n" +
+	// "Content-lengthL 20\r\n" +
+	// "\r\n" +
+	// "<h1>Hello, World!")
+
+	responseData := []byte("HTTP/1.1 200 OK\r\n" +
+		"Accept-Ranges: none\r\n" +
+		"Vary: Accept-Encoding\r\n" +
+		"Content-Type: image/jpeg\r\n" +
+		// "Content-lengthL 20\r\n" +
+		"\r\n")
+	responseData = append(responseData, openPictureConvertToBytes()...)
+	conn.Write(responseData)
+	conn.Close()
+}
+
 func parseHTTP(data []byte) {
 	stringData := string(data)
-	// split request body by nextline
-	// split by space
 	newlineSep := strings.Split(stringData, "\n")
 	for _, lines := range newlineSep {
 		fmt.Println("value : ", lines)
 	}
-
-	// test := []string{"testing", "value", " another "}
-	// fmt.Printf("split data: \n %v \n %v", newlineSep, test)
-	// fmt.Printf("data recieved :\n %s\n", stringData)
 }
 
 func openPictureConvertToBytes() []byte {
