@@ -16,8 +16,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println("Server listening for new requests !")
 	for {
-		fmt.Println("accepting requests !")
 		conn, err := list.Accept()
 		fmt.Println("got a new request")
 		if err != nil {
@@ -33,7 +33,7 @@ func handleConn(conn net.Conn) {
 	data := make([]byte, 1024)
 	conn.Read(data)
 
-	parseHTTP(data)
+	// parseHTTP(data)
 	// responseData := []byte("HTTP/1.1 200 OK\r\n" +
 	// "Accept-Ranges: none\r\n" +
 	// "Vary: Accept-Encoding\r\n" +
@@ -62,28 +62,6 @@ func parseHTTP(data []byte) {
 }
 
 func openPictureConvertToBytes() []byte {
-
-	// file, err := os.OpenFile("dog_picture.jpg", os.O_RDONLY, 0666)
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// // pictureData := make([]byte, 2000)
-	// var picData []byte
-
-	// file.Read(picData)
-
-	// for {
-	// 	var data = make([]byte, 200)
-	// 	_, err := file.Readfile(data)
-	// 	if err != nil {
-	// 		break
-	// 	}
-	// 	picData = append(picData, data...)
-	// }
-	// picData = slices.Clip(picData)
-	// return picData
 
 	b, err := os.ReadFile("dog_picture.jpg")
 
