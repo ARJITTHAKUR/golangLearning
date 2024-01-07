@@ -9,15 +9,6 @@ import (
 const port = ":8080"
 
 func main() {
-	// fmt.Println("Hello, World !")
-
-	// server := http.NewServeMux()
-
-	// server.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	// 	w.Write([]byte("hello"))
-	// })
-
-	// err := http.ListenAndServe(port, server)
 
 	server := http.Server{
 		Addr: port,
